@@ -134,7 +134,7 @@ class habitatBoundaryArea(QgsProcessingAlgorithm):
             'MITER_LIMIT': 10,
             'OUTPUT': parameters['BUFFER_OUTPUT']
             })
-            split = processing.run("native:buffer",
+            split = processing.run("native:splitvectorlayer",
             {'INPUT': parameters['BUFFER_OUTPUT'],
             'FIELD': parameters['habitat_id'],
             'FILE_TYPE': 1,
@@ -145,11 +145,6 @@ class habitatBoundaryArea(QgsProcessingAlgorithm):
             'PREDICATE': 0, 
             'INTERSECT':  parameters['WATERBODY'],
             'OUTPUT': parameters['EXTRACT_OUTPUT']    
-            })
-            convexHull = processing.run("qgis:minimumboundinggeometry",
-            { 'INPUT': parameters['EXTRACT_OUTPUT'],
-            'TYPE':3,
-            'OUTPUT': parameters['MINBOUNDARY_OUTPUT'],
             })
         return {'OUTPUT': append['OUTPUT']}
     #overlapLayer = processing.run("native:calculatevectoroverlaps",
