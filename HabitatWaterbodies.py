@@ -147,10 +147,4 @@ class habitatBoundaryArea(QgsProcessingAlgorithm):
             'OUTPUT': parameters['EXTRACT_OUTPUT']    
             })
         return {'OUTPUT': append['OUTPUT']}
-    #overlapLayer = processing.run("native:calculatevectoroverlaps",
-    #{   'INPUT': convexHull['OUTPUT'],
-    #    'LAYERS': extract['OUTPUT'], 
-    #    'OUTPUT': folderPath + xfiles +'overlapAnalysis4.shp',
-    #})
-        
     
